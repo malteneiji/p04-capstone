@@ -1,4 +1,7 @@
 # p04-capstone
+This program is a find function which will ask the user for files up to 10 text files and it will ask the user for a specific word and the program will find that word in all the files and report their line and word numbers
+
+
 ## Input/Output
 [main.cpp lines 32-33](/main.cpp)
 I have used the iostream cin to get the file names from the user and cout to display messages on the terminal for the user to see.
