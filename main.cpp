@@ -2,49 +2,18 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "find.h"
 using namespace std;
-class findwords
-{
-	public:
-	
-		void setFilename(char filen[200])
-		{
-			
-			for(int i = 0;i<200;i++)
-			{
-			filename[i] = filen[i];
-			}
-		}
-			
-		string getFilename()
-		{
 
-			return filename;
-		}
-		int find(string word , int (&lineno)[100] , int (&wordno) [100]);
-	private:
-		char filename[200];
-		int fileno;
-	
-
-};
-
-
-void printinformation(string filename ,int words, int lineno[100], int wordno[100]);
+void printinformation(string ,int , int [], int []);
 
 int main()
 {
 
 	ifstream file;
 	char filename[200];
-	char contents[200];
-
 	int i = 0;
 	string filenames[10];
-	string line;
-
-	string word;
-	string chosenword;
 	bool success;
 	int filenumber = 0;
 	int words = 0;
@@ -54,6 +23,8 @@ int main()
 	string fname;
 	int wordno[100];
 	int lineno[100];
+	cout <<"Welcome to Find , Enter the Filenames you want to search through and after done enter done or DONE" << endl;
+
 	do
 	{
 	do 
@@ -111,67 +82,4 @@ cout <<"Found word in line "<< lineno[i] << " word "<< wordno[i] <<endl;
 }
 
 }
-int findwords::find(string word , int (&lineno)[100] , int (&wordno) [100])
-                {
-                ifstream file;
-                string words;
-                string wordin;
-                string line;
-                string lastline;
-                stringstream ss;
-                int wordcount = 0;
-                int linecount = 0;
-                char c[50];
-                int spaces = 0;
-                char fname[200];
-                int j = 0;
-                int k = 0;
-                file.open(filename);
-
-                line = "";
-
-		while(file.good())
-		{
-                getline(file,line);
-		j++;
-                ss << line;
-                while(!ss.eof())
-                {
-                ss >> wordin;
-        	k++;   
-		if(ss.fail())
-		{
-		k--;
-//		cout << "Failed" << endl;
-		}
-		else if(!ss.fail())
-		{	
-		if(word == wordin)
-		{
-			lineno[wordcount] = j;
-			wordno[wordcount] = k;		
-			wordcount++;
-		  // cout <<"FOUND The Line : "<< lineno[wordcount-1] << endl;
-	          // cout <<"FOUND word no "<< wordno[wordcount-1] << endl;
-
-		}
-		}
-	    // cout <<"The Word : "<< wordin << endl;
-           // cout <<"The Line : "<< j << endl;
-//	cout <<"word no "<< k << endl;
-		    }
-//		cout <<"Word count : "<< k << endl;
-		k = 0;
-		ss.clear();
-		
-		}
-//		cout <<"Line count : "<< j << endl;
-
-/*		for(int i = 0;i<wordcount;i++)
-		{
-		cout <<"Found word in Line "<< lineno[i] << " Word "<< wordno[i] << endl;
-		}
-*/
-		return wordcount;
-                }
 
